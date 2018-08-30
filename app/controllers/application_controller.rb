@@ -11,43 +11,43 @@ class ApplicationController < Sinatra::Base
   get '/' do
     redirect '/posts'
   end
-  
-  #CREATE
-  get '/posts/new' do 
-    erb :'new.erb'
+   #CREATE - NEW action
+  get '/posts/new' do
+    erb :'new.html'
   end
-  
+   #CREATE - CREATE action
   post '/posts' do
     @post = Post.create(name: params[:name], content: params[:content])
     erb :'show.html'
   end
-  
-  #READ 
-  post '/posts' do
-    @post = Post.all 
+   #READ - INDEX action for all instances
+  get '/posts' do
+    @posts = Post.all
     erb :'index.html'
   end
-  
-  post '/posts/:id' do
-    @post = Post.find(params[:id]) 
+   #READ - SHOW action for specific instance
+  get '/posts/:id' do
+    @post = Post.find(params[:id])
     erb :'show.html'
   end
-  
-  #UPDATE
-  post '/posts/:id/edit' do
-    @post = Post.find(params[:id]) 
+   #UPDATE - EDIT action
+  get '/posts/:id/edit' do
+    @post = Post.find(params[:id])
     erb :'edit.html'
   end
-  
+   #UPDATE - UPDATE action
   patch '/posts/:id' do
     @post = Post.find(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
     @post.save
     erb :'show.html'
-    
+    #shortform update
+      #@post = Post.find(params[:id])
+      #@post.update(name: params[:name], content: params[:content])
   end
-   #DELETE 
+   #DELETE - DESTROY action
+    #via "form" button on show.html.erb
   delete '/posts/:id/delete' do
     @post = Post.find(params[:id])
     @post.delete
