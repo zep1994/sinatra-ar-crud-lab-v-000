@@ -4,8 +4,8 @@
   <title></title>
 </head>
     <body>
-      <h1>This is the SHOW action </h1>
-       <p>Name of Post:<%= @post.name %></p>
+        <h1>This is the SHOW action for a specific instance</h1>
+        <p>Name of Post:<%= @post.name %></p>
         <p>Content of Post: <%= @post.content %></p>
         <br>
         <form method="post" action="/posts/<%= @post.id %>/delete">
@@ -13,4 +13,4 @@
             <input type="submit" value="delete">
         </form>
     </body>
-  </html>
+</html> 
