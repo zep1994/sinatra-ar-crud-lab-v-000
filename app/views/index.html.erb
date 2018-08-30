@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+    <body>
+        <h1>This is the INDEX action for all instances</h1>
+        <% @posts.each do |post| %>
+            <div>
+              <p>Post Name:<%= post.name %></p>
+              <p>Post Content:<%= post.content %></p>
+            </div><br>
+        <% end %>
+    </body>
+</html>
