@@ -15,27 +15,27 @@ class ApplicationController < Sinatra::Base
   get '/posts/new' do
     erb :'new.html'
   end
-   #CREATE - CREATE action
+
   post '/posts' do
     @post = Post.create(name: params[:name], content: params[:content])
     erb :'show.html'
   end
-   #READ - INDEX action for all instances
+   #READ 
   get '/posts' do
     @posts = Post.all
     erb :'index.html'
   end
-   #READ - SHOW action for specific instance
+   
   get '/posts/:id' do
     @post = Post.find(params[:id])
     erb :'show.html'
   end
-   #UPDATE - EDIT action
+   #UPDATE
   get '/posts/:id/edit' do
     @post = Post.find(params[:id])
     erb :'edit.html'
   end
-   #UPDATE - UPDATE action
+  
   patch '/posts/:id' do
     @post = Post.find(params[:id])
     @post.name = params[:name]
